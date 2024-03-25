@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Minhwan Shin">
+    <meta name="email" content="shin0091@algonquinlive.com">
+    <meta name="date" content="2024-03-20">
+    <title>Flashback Login</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <div class = "container">
+        <header>
+            <h1>FLASHBACK</h1>
+        </header>
+        <nav class ="neon">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Top Rated</a></li>
+            <li><a href="#">Genres</a></li>
+            <li><a href="#">Advanced Search</a></li>
+            <!-- Add more navigation links as needed -->
+        </nav>
+    </div>
+    <form id="registration-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required>
+        <span class="error" id="name-error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <span class="error" id="email-error"></span>
+
+        <!-- <label for="postal-code">Postal Code:</label>
+        <input type="text" id="postal-code" required pattern="[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d">
+        <span class="error" id="postal-code-error"></span> -->
+
+        <fieldset>
+            <legend>Referred By:</legend>
+            <div>
+            <label>Social Media <input type="radio" name="referred" value="social-media"> </label>
+            <label>Advertising <input type="radio" name="referred" value="advertising"> </label>
+            <label>Word of Mouth <input type="radio" name="referred" value="word-of-mouth"></label>
+            <label>Internet Search <input type="radio" name="referred" value="internet-search"></label>
+            <label>Other <input type="radio" name="referred" value="other" onclick="toggleTextbox('C')"> </label>
+            <input type="text" id="other-referred" placeholder="Specify" disabled="disabled">
+            </div>
+        </fieldset>
+
+        <button type="submit">Register</button>
+    </form>
+
+<script language="javascript" type="text/javascript" src="jscode.js"></script>
+<!-- Footer -->
+    <footer>
+        <p>Contact: email.com</p> 
+    </footer>
+</body>
+</html>

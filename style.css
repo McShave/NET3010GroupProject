@@ -1,0 +1,96 @@
+/* styles.css */
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'YourFont', sans-serif;
+}
+
+header {
+    background-color: #626d71;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+.neon {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #0048ff, 0 0 30px #0048ff, 0 0 40px #0048ff, 0 0 55px #0048ff, 0 0 75px #0048ff;
+}
+
+/* Navbar styles */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #8b8b8b;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding: 50px 0;
+}
+
+button {
+    width: 111px;
+    height: 36px;
+    background-color: #021e3a;
+    border: 1px solid #021e3a;
+    border-radius: 4px;
+    color: #fff;
+    /* margin: 0 auto; */
+}
+
+/* Logo styles */
+.logo {
+    text-align: left; /* Align the logo to the left */
+    padding-left: 20px; 
+}
+
+.logo img {
+    text-align: left;
+    max-width: 100%;
+    height: auto; 
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Search box styles */
+input {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 616px;
+    height: 46px;
+    background: #FFFFFF;
+    border: 1px solid #DFE1E5;
+    border-radius: 24px;
+}
+.search-box {
+    text-align: center;
+    /* margin-top: 20px; */
+}
+.search-box input[type="text"] {
+    /* width: 500px;
+    height: 60px; */
+    font-size: 18px;
+    padding: 10px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 200px;
+}
