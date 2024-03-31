@@ -1,4 +1,11 @@
 /* styles.css */
+/* Student Name: Minhwan Shin */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     background-color: #000;
@@ -7,10 +14,22 @@ body {
 }
 
 header {
-    background-color: #626d71;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    background-color: #24252a;;
+    /* background-color: #626d71;
     color: #fff;
     text-align: center;
-    padding: 1rem;
+    padding: 1rem; */
+}
+
+/* Logo styles */
+.logo {
+    margin-right: auto;
+    /* text-align: left;
+    padding-left: 20px;  */
 }
 
 .neon {
@@ -19,74 +38,118 @@ header {
 }
 
 /* Navbar styles */
-nav {
+.nav_links {
+    list-style: none;
+    display: flex;
+}
+
+.nav_links a,
+.cta,
+.button,
+button a
+{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+.nav_links li {
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: color 0.3s ease 0s;
+}
+  
+.nav_links li a:hover {
+    color: #0088a9;
+}
+
+.cta {
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+  
+.cta:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+/* nav {
     display: flex;
     justify-content: center;
     background-color: #8b8b8b;
     padding: 10px;
-}
+} */
 
-nav a {
+/* nav a {
     color: #fff;
     text-decoration: none;
     margin: 0 20px;
-}
+} */
 
-li {
+/* li {
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: center;
     padding: 50px 0;
-}
+} */
 
-button {
-    width: 111px;
-    height: 36px;
-    background-color: #021e3a;
-    border: 1px solid #021e3a;
-    border-radius: 4px;
-    color: #fff;
-    /* margin: 0 auto; */
-}
-
-/* Logo styles */
-.logo {
-    text-align: left; /* Align the logo to the left */
-    padding-left: 20px; 
-}
-
-.logo img {
-    text-align: left;
-    max-width: 100%;
-    height: auto; 
-}
 
 h1 {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 120px;
+    margin-bottom: 10px;
 }
 
 /* Search box styles */
 input {
-    display: block;
+    display: inline;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
     width: 616px;
-    height: 46px;
+    height: 60px;
     background: #FFFFFF;
-    border: 1px solid #DFE1E5;
-    border-radius: 24px;
+    border: 1px solid;
+    border-radius: 15px;
 }
 .search-box {
     text-align: center;
-    /* margin-top: 20px; */
+    margin-bottom: 10px;
 }
 .search-box input[type="text"] {
     /* width: 500px;
     height: 60px; */
+    font-size: 20px;
+    padding: 20px;
+}
+
+.button {
     font-size: 18px;
-    padding: 10px;
+    padding: 20px 20px;
+    background-color: rgba(0, 136, 169, 1);
+    text-decoration: none;
+    border: 1px solid #002163;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.button:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+button {
+    background-color: rgba(0, 136, 169, 1);
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Footer styles */
