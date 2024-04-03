@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Minhwan Shin">
+    <meta name="email" content="shin0091@algonquinlive.com">
+    <meta name="date" content="2024-04-02">
+    <title>TITLE</title>
+    <link rel="stylesheet" type="text/css" href="test.css">
+</head>
+<body>
+    <header></header>
+
+    <div class="movie">
+        <!-- <img src="{coverImg}" alt="{title}" style="width: 100%; max-width: 300px;"> -->
+        <img class="movie__img" src="test.png" alt="{title}" style="width: 100%; max-width: 300px;">
+        <div>
+          <h2 class="movie__title">
+            <a href="{`/movie/${id}`}">{title} TITLE OF THE MOVIE</a>
+        </h2>
+            <h3 class="movie__year">{year}YEAR OF THE MOVIE</h3>
+          <!-- About the movie's description as summary -->
+          <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary} SUMMARIZED DISCRIPTION OF THE MOVIE</p>
+          <ul class="movie__genres">
+            {genres.map(g => (
+              <li key={g}>{g}GENRE OF THE MOVIE</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="movie">
+        <!-- <img src="{coverImg}" alt="{title}" style="width: 100%; max-width: 300px;"> -->
+        <img class="movie__img" src="test.png" alt="{title}" style="width: 100%; max-width: 300px;">
+        <div>
+          <h2 class="movie__title">
+            <a href="{`/movie/${id}`}">{title}asdfasdfasdf</a>
+          </h2>
+          <h3 class="movie__year">{year}asdasdfasdfasdf</h3>
+          <!-- About the movie's description as summary -->
+          <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}asdfasdfasdf</p>
+          <ul class="movie__genres">
+            {genres.map(g => (
+              <li key={g}>{g}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="movie">
+        <!-- <img src="{coverImg}" alt="{title}" style="width: 100%; max-width: 300px;"> -->
+        <img class="movie__img" src="test.png" alt="{title}" style="width: 100%; max-width: 300px;">
+        <div>
+          <h2 class="movie__title">
+            <a href="{`/movie/${id}`}">{title}asdfasdfasdf</a>
+          </h2>
+          <h3 class="movie__year">{year}asdasdfasdfasdf</h3>
+          <!-- About the movie's description as summary -->
+          <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}asdfasdfasdf</p>
+          <ul class="movie__genres">
+            {genres.map(g => (
+              <li key={g}>{g}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+      
+</body>
+</html>
+

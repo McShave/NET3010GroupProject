@@ -109,7 +109,7 @@ h1 {
 }
 
 /* Search box styles */
-input {
+.search{
     display: inline;
     margin: 0 auto;
     padding: 20px;
@@ -123,11 +123,39 @@ input {
     text-align: center;
     margin-bottom: 10px;
 }
-.search-box input[type="text"] {
+.search-box input[type="search"] {
     /* width: 500px;
     height: 60px; */
     font-size: 20px;
     padding: 20px;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login
+{
+    display: inline-block;
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
 }
 
 .button {
@@ -157,3 +185,76 @@ footer {
     text-align: center;
     margin-top: 200px;
 }
+
+
+
+
+
+
+
+
+
+
+
+.body {
+    margin: 50px;
+    padding: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #eff3f7;
+    height: 100%;
+}
+
+.movie {
+    background-color: white;
+    margin-bottom: 70px;
+    font-weight: 300;
+    padding: 20px;
+    border-radius: 5px;
+    color: #626369;
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) 2fr;
+    grid-gap: 20px;
+    text-decoration: none;
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  
+  .movie__img {
+    position: relative;
+    top: -50px;
+    max-width: 150px;
+    width: 100%;
+    margin-right: 30px;
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+      0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  }
+  
+  .movie__title,
+  .movie__date {
+    margin: 0;
+    font-weight: 300;
+    text-decoration: none;
+  }
+  
+  .movie__title a {
+    margin-bottom: 5px;
+    font-size: 24px;
+    color: #2c2c2c;
+    text-decoration: none;
+  }
+  
+  .movie__genres {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0px;
+  }
+  
+  .movie__genres li,
+  .movie__date {
+    margin-right: 10px;
+    font-size: 14px;
+  }

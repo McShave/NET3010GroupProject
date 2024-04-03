@@ -6,35 +6,48 @@
     <meta name="author" content="Minhwan Shin">
     <meta name="email" content="shin0091@algonquinlive.com">
     <meta name="date" content="2024-03-20">
-    <title>Flashback Login</title>
+    <title>Flashback Registration Page</title>
     <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to CSS file -->
 </head>
 <body>
     <header>
             <a class="logo" href="index.html"><img src="logo_2.png" alt="Flashback Logo" height="80"></a>
-            <nav>
+        <nav>
+            <ul class="nav_links">
+            <!-- <img src="logo_2.JPG" alt="Flashback Logo" height="100"> -->
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">Top Rated</a></li>
-                <li><a href="#">Genres</a></li>
-                <li><a href="#">Advanced Search</a></li>
-                <!-- Add more navigation links as needed -->
-            </nav>
+                <li><a href="advanced_search.html">Advanced Search</a></li>
+                <!-- <li><button><a href="registration.html">Login</a></button></li> Simple user login button -->
+            </ul>
+        </nav>
+        <!-- <p class="menu cta">Menu</p> -->
     </header>
     
+    <h1 class="neon">Sign up for FLASHBACK</h1>
     <form id="registration-form">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" required>
-        <span class="error" id="name-error"></span>
+        <div>
+            <label for="name">Profile Picture:</label>
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-        <span class="error" id="email-error"></span>
+        <div>
+            <label for="name">Your Username:</label>
+            <input class="login" type="text" id="name" required>
+            <span class="error" id="name-error"></span>
+        </div>
 
-        <!-- <label for="postal-code">Postal Code:</label>
-        <input type="text" id="postal-code" required pattern="[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d">
-        <span class="error" id="postal-code-error"></span> -->
+        <div>
+            <label for="email">Email:</label>
+            <input class="login" type="email" id="email" required>
+            <span class="error" id="email-error"></span>
+        </div>
 
-        <fieldset>
+        <div>
+            <label for="password">Password:</label>
+            <input class="login" type="password" id="password" required>
+            <span class="error" id="password-error"></span>
+        </div>
+
+        <!-- <fieldset>
             <legend>Referred By:</legend>
             <div>
             <label>Social Media <input type="radio" name="referred" value="social-media"> </label>
@@ -44,7 +57,7 @@
             <label>Other <input type="radio" name="referred" value="other" onclick="toggleTextbox('C')"> </label>
             <input type="text" id="other-referred" placeholder="Specify" disabled="disabled">
             </div>
-        </fieldset>
+        </fieldset> -->
 
         <button type="submit">Register</button>
     </form>
