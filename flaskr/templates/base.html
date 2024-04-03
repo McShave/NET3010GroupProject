@@ -1,0 +1,29 @@
+<!doctype html>
+<head>
+  <title>{% block title %}{% endblock %}Flashback</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<h1>Flashback</h1>
+<img src="{{ url_for('static', filename='images/logo_1.png') }}" alt="Flashback Logo" height="80"></a>
+<nav>
+  <ul>
+    <li><a href="{{ url_for('advancedsearch') }}">Advanced Search</a></li>
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}
+    {% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
