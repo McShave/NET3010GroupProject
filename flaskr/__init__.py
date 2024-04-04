@@ -1,6 +1,6 @@
 import os
 
-from flask import (Flask, render_template)
+from flask import (Flask, render_template, request, redirect, url_for, session)
 
 
 def create_app(test_config=None):
@@ -29,12 +29,18 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
     
-    @app.route('/index.html')
+    @app.route('//', methods=['GET', 'POST'])
     def index():
+        if request.method == 'GET':
+            moviesearch = request.form["moviesearch"]
+            session["message"] = moviesearch
+            #do api search with moviesearch
+            return redirect(url_for('advancedsearch'))
         return render_template('index.html')
     
     @app.route('/advancedsearch')
     def advancedsearch():
+        message = session["message"]
         return render_template('advancedsearch.html')
 
     from . import db

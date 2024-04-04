@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 
-{% block header %}
+{% block header %}{% endblock %}
 
+{% block content %}
+<h1 class="neon">FLASHBACK</h1>
+<form method="get">
+    <!-- Movie search box (input field, search button, etc.) -->
+    <input type="moviesearch" placeholder="Search for movies...">
+    <input type="submit" value="Search">
+</form>
 {% endblock %}
