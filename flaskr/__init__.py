@@ -29,7 +29,11 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
     
+<<<<<<< HEAD
     @app.route('//', methods=['GET', 'POST'])
+=======
+    @app.route('//')
+>>>>>>> b053eb248f70b8774eae17837c5368973893e4b0
     def index():
         if request.method == 'GET':
             moviesearch = request.form["moviesearch"]
@@ -38,11 +42,16 @@ def create_app(test_config=None):
             return redirect(url_for('advancedsearch'))
         return render_template('index.html')
     
+    @app.route('/basic_search')
+    def basic_search():
+        return render_template('basic_search.html')
+    
     @app.route('/advancedsearch')
     def advancedsearch():
         message = session["message"]
         return render_template('advancedsearch.html')
 
+    
     from . import db
     db.init_app(app)
 
