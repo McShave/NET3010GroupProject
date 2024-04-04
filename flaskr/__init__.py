@@ -29,14 +29,19 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
     
-    @app.route('/index.html')
+    @app.route('//')
     def index():
         return render_template('index.html')
+    
+    @app.route('/basic_search')
+    def basic_search():
+        return render_template('basic_search.html')
     
     @app.route('/advancedsearch')
     def advancedsearch():
         return render_template('advancedsearch.html')
 
+    
     from . import db
     db.init_app(app)
 

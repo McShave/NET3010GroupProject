@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Minhwan Shin">
+    <meta name="email" content="shin0091@algonquinlive.com">
+    <meta name="date" content="2024-03-20">
+    <title>FLASHBACK Login Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a class="logo" href="index.html"><img src="logo_1.png" alt="Flashback Logo" height="80"></a>
+        <nav>
+            <ul class="nav_links">
+            <!-- <img src="logo_2.JPG" alt="Flashback Logo" height="100"> -->
+                <li><a href="index.html">Home</a></li>
+                <li><a href="advanced_search.html">Advanced Search</a></li>
+                <!-- <li><button><a href="registration.html">Login</a></button></li> Simple user login button -->
+            </ul>
+        </nav>
+        <a class="cta" href="registration.html">Registration</a>
+        <!-- <p class="menu cta">Menu</p> -->
+        </header>
+        
+        <h1 class = "neon">Welcome to FLASHBACK</h1>
+        <div class="content">
+            <div class="main">
+                <form id="login-form">
+                    <div>
+                        <label for="name">Username:</label>
+                        <input class="login" type="text" id="name" required>
+                        <span class="error" id="name-error"></span>
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input class="login" type="password" id="password" required>
+                        <span class="error" id="password-error"></span>
+                    </div>
+                    
+                    <button><a type="submit" href="user_portal.html">Sign In</a></button>
+                </form>
+
+                <p>If you are new to FLASHBACK, please register using the link: </p>
+                <button><a href="registration.html">Registration / Sign Up</a></button>
+
+                
+            </div>
+        </div>
+
+    <footer class="footer">
+        © 2024 FLASHBACK. All rights reserved.
+        <p>Contact: email.com</p> 
+    </footer>
+
+
+</body>
+</html>

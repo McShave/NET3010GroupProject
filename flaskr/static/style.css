@@ -1,26 +1,260 @@
-html { font-family: sans-serif; background: #eee; padding: 1rem; }
-body { max-width: 960px; margin: 0 auto; background: white; }
-h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
-a { color: #377ba8; }
-hr { border: none; border-top: 1px solid lightgray; }
-nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
-nav h1 { flex: auto; margin: 0; }
-nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
-nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
-nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
-.content { padding: 0 1rem 1rem; }
-.content > header { border-bottom: 1px solid lightgray; display: flex; align-items: flex-end; }
-.content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; }
-.flash { margin: 1em 0; padding: 1em; background: #cae6f6; border: 1px solid #377ba8; }
-.post > header { display: flex; align-items: flex-end; font-size: 0.85em; }
-.post > header > div:first-of-type { flex: auto; }
-.post > header h1 { font-size: 1.5em; margin-bottom: 0; }
-.post .about { color: slategray; font-style: italic; }
-.post .body { white-space: pre-line; }
-.content:last-child { margin-bottom: 0; }
-.content form { margin: 1em 0; display: flex; flex-direction: column; }
-.content label { font-weight: bold; margin-bottom: 0.5em; }
-.content input, .content textarea { margin-bottom: 1em; }
-.content textarea { min-height: 12em; resize: vertical; }
-input.danger { color: #cc2f2e; }
-input[type=submit] { align-self: start; min-width: 10em; }
+/* styles.css */
+/* Student Name: Minhwan Shin */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'YourFont', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    background-color: #24252a;;
+    /* background-color: #626d71;
+    color: #fff;
+    text-align: center;
+    padding: 1rem; */
+}
+
+/* Logo styles */
+.logo {
+    margin-right: auto;
+    /* text-align: left;
+    padding-left: 20px;  */
+}
+
+.neon {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #0048ff, 0 0 30px #0048ff, 0 0 40px #0048ff, 0 0 55px #0048ff, 0 0 75px #0048ff;
+}
+
+/* Navbar styles */
+.nav_links {
+    list-style: none;
+    display: flex;
+}
+
+.nav_links a,
+.cta,
+.button,
+button a
+{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+.nav_links li {
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: color 0.3s ease 0s;
+}
+  
+.nav_links li a:hover {
+    color: #0088a9;
+}
+
+.cta {
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+  
+.cta:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+/* nav {
+    display: flex;
+    justify-content: center;
+    background-color: #8b8b8b;
+    padding: 10px;
+} */
+
+/* nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+} */
+
+/* li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding: 50px 0;
+} */
+
+
+h1 {
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: 10px;
+}
+
+/* Search box styles */
+.search{
+    display: inline;
+    margin: 0 auto;
+    padding: 20px;
+    width: 616px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 1px solid;
+    border-radius: 15px;
+}
+.search-box {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.search-box input[type="search"] {
+    /* width: 500px;
+    height: 60px; */
+    font-size: 20px;
+    padding: 20px;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login
+{
+    display: inline-block;
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.button {
+    font-size: 18px;
+    padding: 20px 20px;
+    background-color: rgba(0, 136, 169, 1);
+    text-decoration: none;
+    border: 1px solid #002163;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.button:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+button {
+    background-color: rgba(0, 136, 169, 1);
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.body {
+    margin: 50px;
+    padding: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #eff3f7;
+    height: 100%;
+}
+
+.movie {
+    background-color: white;
+    margin-bottom: 70px;
+    font-weight: 300;
+    padding: 20px;
+    border-radius: 5px;
+    color: #626369;
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) 2fr;
+    grid-gap: 20px;
+    text-decoration: none;
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  
+  .movie__img {
+    position: relative;
+    top: -50px;
+    max-width: 150px;
+    width: 100%;
+    margin-right: 30px;
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+      0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  }
+  
+  .movie__title,
+  .movie__date {
+    margin: 0;
+    font-weight: 300;
+    text-decoration: none;
+  }
+  
+  .movie__title a {
+    margin-bottom: 5px;
+    font-size: 24px;
+    color: #2c2c2c;
+    text-decoration: none;
+  }
+  
+  .movie__genres {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0px;
+  }
+  
+  .movie__genres li,
+  .movie__date {
+    margin-right: 10px;
+    font-size: 14px;
+  }
