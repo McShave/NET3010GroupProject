@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
+
+
+{% block content %}
+    {% for item in query["movies"] %}
+        <p>{{ item }}</p>
+    {% endfor %}
+{% endblock %}
+
+
+
+{% extends 'base.html' %}
 {% block header %}
     123
 {% endblock %}

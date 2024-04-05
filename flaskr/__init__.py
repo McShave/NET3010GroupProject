@@ -24,6 +24,8 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    from . import search
+
     # a simple page that says hello
     @app.route('/hello')
     def hello():
@@ -35,10 +37,12 @@ def create_app(test_config=None):
             session["search"] = request.form["moviesearch"]
             return redirect(url_for('movie_search'))
         return render_template('index.html')
-
+    
     @app.route('/movie_search')
     def movie_search():
-        return render_template('movie_search.html')
+        #query = search.queryMovie(session["search"])
+        query = {"movies" : ["happy", "sad"]}
+        return render_template('movie_search.html', search=session["search"])
     
     @app.route('/person_search')
     def person_search():
