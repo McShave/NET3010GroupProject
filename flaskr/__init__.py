@@ -33,16 +33,16 @@ def create_app(test_config=None):
     def index():
         if request.method == 'POST':
             session["search"] = request.form["moviesearch"]
-            return redirect(url_for('basic_search'))
+            return redirect(url_for('movie_search'))
         return render_template('index.html')
+
+    @app.route('/movie_search')
+    def movie_search():
+        return render_template('movie_search.html')
     
-    @app.route('/basic_search')
-    def basic_search():
-        return render_template('basic_search.html', search=session["search"])
-    
-    @app.route('/advancedsearch')
-    def advancedsearch():
-        return render_template('advancedsearch.html')
+    @app.route('/person_search')
+    def person_search():
+        return render_template('person_search.html')
 
     from . import db
     db.init_app(app)

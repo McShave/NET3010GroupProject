@@ -45,7 +45,6 @@ header {
 
 .nav_links a,
 .cta,
-.userButton, 
 .button,
 button a
 {
@@ -77,9 +76,7 @@ button a
     transition: all 0.3s ease 0s;
 }
   
-.cta:hover,
-.userButton:hover
-{
+.cta:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
 
@@ -107,9 +104,8 @@ button a
 
 h1 {
     text-align: center;
-    margin-top: 110px;
+    margin-top: 120px;
     margin-bottom: 10px;
-    font-size: 32px;
 }
 
 /* Search box styles */
@@ -123,7 +119,7 @@ h1 {
     border: 1px solid;
     border-radius: 15px;
 }
-.search-box[type="search"] {
+.search-box {
     text-align: center;
     margin-bottom: 10px;
 }
@@ -134,7 +130,7 @@ h1 {
     padding: 20px;
 }
 
-form[type="userInfo"] {
+form {
     max-width: 400px;
     margin: 20px auto;
     padding: 20px;
@@ -182,20 +178,6 @@ button {
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.userButton{
-    padding: 9px 25px;
-    background-color: rgba(0, 136, 169, 1);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-    
-.text {
-    text-align: center;
-    margin-top: 30px;
 }
 
 /* Footer styles */

@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
 
+{% block title %}- Movie Ratings{% endblock %}
 
-{% block header %}{% endblock %}
+{% block header %}
+<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_1.png') }}" alt="Flashback Logo" height="80"></a>
+<nav>
+    <ul class="nav_links">
+    <!-- <img src="logo_2.JPG" alt="Flashback Logo" height="100"> -->
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
+        <!-- <li><button><a href="registration.html">Login</a></button></li> Simple user login button -->
+    </ul>
+</nav>
+<!-- <p class="menu cta">Menu</p> -->
+{% endblock %}
+
 
 {% block content %}
 <h1 class="neon">FLASHBACK</h1>
-<form method="POST">
-    <!-- Movie search box (input field, search button, etc.) -->
-    <input name="moviesearch" id="moviesearch" placeholder="Search for movies...">
-    <input type="submit" value="Search">
+<form class="search-box" type="search" method="POST">    
+        <!-- Movie search box (input field, search button, etc.) -->
+        <input  class="search" type="search" name="moviesearch" id="moviesearch" placeholder="Search for movies...">
+        <input class="button" type="submit" value="Search">
 </form>
 {% endblock %}
+
+

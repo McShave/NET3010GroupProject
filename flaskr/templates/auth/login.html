@@ -1,15 +1,34 @@
 {% extends 'base.html' %}
 
+{% block title %}- Login Page{% endblock %}
+
 {% block header %}
+<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a>
+<nav>
+    <ul class="nav_links">
+    <!-- <img src="logo_2.JPG" alt="Flashback Logo" height="100"> -->
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
+        <!-- <li><button><a href="registration.html">Login</a></button></li> Simple user login button -->
+    </ul>
+</nav>
 {% endblock %}
 
 {% block content %}
-  <h1>{% block title %}Flashback - Log In{% endblock %}</h1>
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
+<h1 class = "neon">Welcome to FLASHBACK</h1>
+  <form type="userInfo" method="post">
+    <div>
+      <label for="username">Username: </label>
+      <input class="login" name="username" id="username" required>
+    </div>
+    <div>
+      <label for="password">Password: </label>
+      <input class="login" type="password" name="password" id="password" required>
+    </div>
+    <input class="userButton" type="submit" value="Log In">
   </form>
+  <div class="text">
+    <p>If you are new to FLASHBACK, please register using the link: </p><br>
+    <a class="userButton" href="{{ url_for('auth.register') }}">Register</a>
+  </div>
 {% endblock %}

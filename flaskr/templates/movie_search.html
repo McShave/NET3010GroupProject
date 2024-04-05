@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+{% block header %}
+    123
+{% endblock %}
+
+{% block content %}
+    {{ search }}
+{% endblock %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +16,7 @@
     <meta name="email" content="shin0091@algonquinlive.com">
     <meta name="date" content="2024-03-15">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>FLASHBACK - Basic Movie Search</title>
+    <title>FLASHBACK - Movie Search</title>
 </head>
 <body>
     <header>
