@@ -40,9 +40,11 @@ def create_app(test_config=None):
     
     @app.route('/movie_search')
     def movie_search():
+        
         #query = search.queryMovie(session["search"])
         query = {"movies" : ["happy", "sad"]}
-        return render_template('movie_search.html', search=session["search"])
+        return render_template('movie_search.html', query=query)
+        # return render_template('movie_search.html', search=session["search"])
     
     @app.route('/person_search')
     def person_search():

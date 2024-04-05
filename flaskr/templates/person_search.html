@@ -1,1 +1,14 @@
 {% extends 'base.html' %}
+
+{% block title %}- Person Search{% endblock %}
+
+{% block header %}
+<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a>
+<nav>
+    <ul class="nav_links">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
+    </ul>
+</nav>
+<!-- <p class="menu cta">Menu</p> -->
+{% endblock %}
