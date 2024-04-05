@@ -1,34 +1,17 @@
 
 
-CREATE TABLE IF NOT EXISTS movie (
-    movieID INTEGER PRIMARY KEY, 
-    name TEXT,
-    rating NUMERIC, 
-    release_year INTEGER
-);
-
-CREATE TABLE IF NOT EXISTS person (
-    PersonID INTEGER PRIMARY KEY, 
-    name TEXT UNIQUE
-);
-
 CREATE TABLE IF NOT EXISTS user (
   userID INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS genre (
-    genreID INTEGER PRIMARY KEY, 
-    name TEXT UNIQUE
-);
-
 CREATE TABLE IF NOT EXISTS user_movie_review (
     reviewID INTEGER PRIMARY KEY AUTOINCREMENT,
-    movieID INTEGER, UserID INTEGER, 
+    movieID INTEGER, 
+    UserID INTEGER, 
     score INTEGER, 
     review TEXT, 
-    FOREIGN KEY(movieID) REFERENCES movie(movieID), 
     FOREIGN KEY(userID) REFERENCES user(userID)
 );
 
@@ -36,6 +19,5 @@ CREATE TABLE IF NOT EXISTS user_watch_next (
     watchnextID INTEGER PRIMARY KEY AUTOINCREMENT, 
     userID INTEGER, 
     movieID INTEGER, 
-    FOREIGN KEY(userID) REFERENCES user(userID), 
-    FOREIGN KEY(movieID) REFERENCES movie(movieID)
+    FOREIGN KEY(userID) REFERENCES user(userID)
 );

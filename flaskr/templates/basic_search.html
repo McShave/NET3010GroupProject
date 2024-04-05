@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-    {{ search }}
+    {% for item in query["movies"] %}
+        <p>{{ item }}</p>
+    {% endfor %}
 {% endblock %}
