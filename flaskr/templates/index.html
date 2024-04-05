@@ -5,9 +5,9 @@
 
 {% block content %}
 <h1 class="neon">FLASHBACK</h1>
-<form method="get">
+<form method="POST">
     <!-- Movie search box (input field, search button, etc.) -->
-    <input type="moviesearch" placeholder="Search for movies...">
+    <input name="moviesearch" id="moviesearch" placeholder="Search for movies...">
     <input type="submit" value="Search">
 </form>
 {% endblock %}
