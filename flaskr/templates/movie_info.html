@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}- Movie Info{% endblock %}
+
+{% block content %}
+
+
+
+{% if g.user %}
+      <!-- <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a> -->
+<div>
+    <form>
+        <input name="review">
+        <input name="score">
+        <input type = "submit">
+    </form>
+</div>
+{% else %}
+      <!-- <li><a href="{{ url_for('auth.register') }}">Register</a> -->
+    <p>If you want to leave a review, Please Log in to our website:</p><br>
+    <a class="cta" href="{{ url_for('auth.login') }}">Login</a>
+{% endif %}
+
+{% endblock %}

@@ -7,17 +7,15 @@
 <nav>
     <ul class="nav_links">
         <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('index') }}">Movie Search</a></li>
+        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
     </ul>
 </nav>
 <!-- <p class="menu cta">Menu</p> -->
 {% endblock %}
 
 {% block content %}
-<h1 class="neon">FLASHBACK - Person Search</h1>
-<form class="search-box" type="search" method="POST">    
-        <!-- Movie search box (input field, search button, etc.) -->
-        <input  class="search" type="search" name="personsearch" id="personsearch" placeholder="Search for casts, directors...">
-        <input class="button" type="submit" value="Search">
-</form>
+    {{ search }}
+    {% for item in query["movies"] %}
+        <p>{{ item }}</p>
+    {% endfor %}
 {% endblock %}

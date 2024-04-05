@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}- Movie Search{% endblock %}
+
+{% block header %}
+<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a>
+<nav>
+    <ul class="nav_links">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
+    </ul>
+</nav>
+<!-- <p class="menu cta">Menu</p> -->
+{% endblock %}
+
+
+{% block content %}
+  <br>
+  <div>"Search Term"</div>
+  <form class="search-box" type="search" method="POST">    
+    <input  class="search" type="search" name="moviesearch" id="moviesearch" placeholder="Search for movies...">
+    <input class="button" type="submit" value="Search">
+  </form>  
+
+  {{ search }}
+
+  {% for item in query["movies"] %}
+        <p>{{ item }}</p>
+
+
+        <div class="body">
+          <div class="movie">
+              <!-- <img src="{coverImg}" alt="{title}" style="width: 100%; max-width: 300px;"> -->
+              <img class="movie__img" src="{{ url_for('static', filename='images/testingPoster.png') }}" alt="{title}" style="width: 100%; max-width: 300px;">
+              <div>
+                <h2 class="movie__title">
+                  <a href="{`/movie/${id}`}">{{title}} TITLE OF THE MOVIE</a>
+                </h2>
+                <h3 class="movie__tagline">{tagline} Reality is a thing of the past.</h3>
+                <p>Runtime</p>
+                <h3 class="movie__date">{date}DATE OF THE MOVIE</h3>
+                <p>Score: </p>
+                <!-- <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary} SUMMARIZED DISCRIPTION OF THE MOVIE</p> -->
+                <p>Overview: SUMMARIZED DISCRIPTION OF THE MOVIE</p>
+                <!-- <ul class="movie__genres">
+                  {genres.map(g => (
+                    <li key={g}>{g}GENRE OF THE MOVIE</li>
+                  ))}
+                </ul> -->
+                <p>Original Language: </p>
+              </div>
+            </div>
+      </div>
+
+  {% endfor %}
+
+    
+    <main>
+    
+        
+    </main>
+
+
+    <div class="body">
+      <div class="movie">
+          <!-- <img src="{coverImg}" alt="{title}" style="width: 100%; max-width: 300px;"> -->
+          <img class="movie__img" src="test.png" alt="{title}" style="width: 100%; max-width: 300px;">
+          <div>
+            <h2 class="movie__title">
+              <a href="{`/movie/${id}`}">{title} TITLE OF THE MOVIE</a>
+            </h2>
+            <h3 class="movie__tagline">{tagline} Reality is a thing of the past.</h3>
+            <p>Runtime</p>
+            <h3 class="movie__date">{date}DATE OF THE MOVIE</h3>
+            <!-- <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary} SUMMARIZED DISCRIPTION OF THE MOVIE</p> -->
+            <p>Overview: SUMMARIZED DISCRIPTION OF THE MOVIE</p>
+            <!-- <ul class="movie__genres">
+              {genres.map(g => (
+                <li key={g}>{g}GENRE OF THE MOVIE</li>
+              ))}
+            </ul> -->
+            <p>Original Language: </p>
+          </div>
+        </div>
+        
+
+        <div class="movie">
+          <!-- <img src="{coverImg}" alt="{title}" style="width: 100%; max-width: 300px;"> -->
+          <img class="movie__img" src="test.png" alt="{title}" style="width: 100%; max-width: 300px;">
+          <div>
+            <h2 class="movie__title">
+              <a href="{`/movie/${id}`}">{title} TITLE OF THE MOVIE</a>
+            </h2>
+            <h3 class="movie__tagline">{tagline} Reality is a thing of the past.</h3>
+            <p>Runtime</p>
+            <h3 class="movie__date">{date}DATE OF THE MOVIE</h3>
+            <!-- <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary} SUMMARIZED DISCRIPTION OF THE MOVIE</p> -->
+            <p>Overview: SUMMARIZED DISCRIPTION OF THE MOVIE</p>
+            <!-- <ul class="movie__genres">
+              {genres.map(g => (
+                <li key={g}>{g}GENRE OF THE MOVIE</li>
+              ))}
+            </ul> -->
+            <p>Original Language: </p>
+          </div>
+        </div>
+
+        <div class="movie">
+          <!-- <img src="{coverImg}" alt="{title}" style="width: 100%; max-width: 300px;"> -->
+          <img class="movie__img" src="test.png" alt="{title}" style="width: 100%; max-width: 300px;">
+          <div>
+            <h2 class="movie__title">
+              <a href="{`/movie/${id}`}">{title} TITLE OF THE MOVIE</a>
+            </h2>
+            <h3 class="movie__tagline">{tagline} Reality is a thing of the past.</h3>
+            <p>Runtime</p>
+            <h3 class="movie__date">{date}DATE OF THE MOVIE</h3>
+            <!-- <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary} SUMMARIZED DISCRIPTION OF THE MOVIE</p> -->
+            <p>Overview: SUMMARIZED DISCRIPTION OF THE MOVIE</p>
+            <!-- <ul class="movie__genres">
+              {genres.map(g => (
+                <li key={g}>{g}GENRE OF THE MOVIE</li>
+              ))}
+            </ul> -->
+            <p>Original Language: </p>
+          </div>
+        </div>
+
+  </div>
+
+{% endblock %}

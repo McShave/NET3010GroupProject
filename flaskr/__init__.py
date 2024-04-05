@@ -35,20 +35,42 @@ def create_app(test_config=None):
     def index():
         if request.method == 'POST':
             session["search"] = request.form["moviesearch"]
-            return redirect(url_for('movie_search'))
+            return redirect(url_for('movie_list'))
         return render_template('index.html')
     
-    @app.route('/movie_search')
-    def movie_search():
+    @app.route('/person_search', methods=('GET', 'POST'))
+    def person_search():
+        if request.method == 'POST':
+            session["search"] = request.form["personsearch"]
+            return redirect(url_for('person_list'))
+        return render_template('person_search.html')
+    
+    @app.route('/movie_list')
+    def movie_list():
         
         #query = search.queryMovie(session["search"])
         query = {"movies" : ["happy", "sad"]}
-        return render_template('movie_search.html', query=query)
-        # return render_template('movie_search.html', search=session["search"])
+        return render_template('movie_list.html', query=query)
+        # return render_template('movie_list.html', search=session["search"])
     
-    @app.route('/person_search')
-    def person_search():
-        return render_template('person_search.html')
+    @app.route('/person_list')
+    def person_list():
+        #query = search.queryMovie(session["search"])
+        query = {"movies" : ["happy", "sad"]}
+        return render_template('movie_list.html', query=query)
+        # return render_template('person_list.html', search=session["search"])
+    
+    @app.route('/movie_info')
+    def movie_info():
+        return render_template('movie_info.html')
+    
+    @app.route('/person_info')
+    def person_info():
+        return render_template('person_info.html')
+
+    @app.route('/user_admin')
+    def user_admin():
+        return render_template('user_admin.html')
 
     from . import db
     db.init_app(app)
