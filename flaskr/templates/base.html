@@ -13,28 +13,19 @@
 <body>
 <section class="content">
   <header>
-    <!-- <h1>Flashback</h1>
-    <img src="{{ url_for('static', filename='images/logo_1.png') }}" alt="Flashback Logo" height="80"></a>
-    <nav>
-      <ul>
-        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
-        {% if g.user %}
-          <li><span>{{ g.user['username'] }}</span>
-          <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-        {% else %}
-          <li><a href="{{ url_for('auth.register') }}">Register</a>
-          <li><a href="{{ url_for('auth.login') }}">Log In</a>
-        {% endif %}
-      </ul>
-    </nav> -->
     {% block header %}
     {% endblock %}
-
+    <a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_1.png') }}" alt="Flashback Logo" height="80"></a>
+    <nav>
+        <ul class="nav_links">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
+        </ul>
+    </nav>
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
-      <!-- <li><a href="{{ url_for('auth.register') }}">Register</a> -->
       <a class="cta" href="{{ url_for('auth.login') }}">Login/Registration</a>
     {% endif %}
   </header>

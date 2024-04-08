@@ -4,6 +4,10 @@ import json
 import requests
 import os
 
+import sys
+
+
+MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November" "December"]
 
 # f = open("searchresults.txt", "x")
 # f.write(json.dumps(respjson, indent=4))
@@ -44,7 +48,7 @@ def queryMovie(movieSearch):
     #              {"title": "", "year" : "", "pathtoposter" : "", "movieid" : ""},
     #               etc ]}
 
-    response = requests.get("https://api.themoviedb.org/3/search/movie", params={"query": movieSearch}, headers=headers)
+    response = requests.get("https://api.themoviedb.org/3/search/movie", params={"query": movieSearch, "language": "en-US"}, headers=headers)
     respjson = response.json()
 
     movies = []
@@ -59,27 +63,27 @@ def queryMovie(movieSearch):
 
     returnJSON = {"movies": movies}
 
-    with open("searchresultMovie.txt", "w") as f:
-        json.dump(returnJSON, f, indent=4)
+    # with open("searchresultMovie.txt", "w") as f:
+    #     json.dump(returnJSON, f, indent=4)
         
     return returnJSON
 
 # TESTING
-movie_search_query = "Pet Sematary"
-movie_search_results = queryMovie(movie_search_query)
-print(json.dumps(movie_search_results, indent=4))
+# movie_search_query = "Pet Sematary"
+# movie_search_results = queryMovie(movie_search_query)
+# print(json.dumps(movie_search_results, indent=4))
 
-with open("searchresultMovie.txt", "r") as file:
-    data = file.read()
+# with open("searchresultMovie.txt", "r") as file:
+#     data = file.read()
 
-print(data)
+# print(data)
 
 
 def queryPerson(personSearch):
     #takes a string personSearch and retrieves person search from tmdb.com
     #returns a json object in the form of:
-    #{ "people" : [{"name" : "", "year_of_birth" : "", "pathtopicture" : "", "personID" : ""},
-    #              {"name" : "", "year_of_birth" : "", "pathtopicture" : "", "personID" : ""},
+    #{ "people" : [{"name" : "", "pathtopicture" : "", "personID" : ""},
+    #              {"name" : "", "pathtopicture" : "", "personID" : ""},
     #              etc ]}
     response = requests.get("https://api.themoviedb.org/3/search/person?include_adult=false&language=en-US&page=1", params={"query": personSearch}, headers=headers)
     respjson = response.json()
@@ -88,7 +92,6 @@ def queryPerson(personSearch):
     for person_data in respjson["results"]:
         person_info = {
             "name": person_data["name"],
-            "year_of_birth": person_data["birthday"] if "birthday" in person_data else "Unknown",
             "pathtopicture": f"https://image.tmdb.org/t/p/w500{person_data['profile_path']}" if person_data['profile_path'] else "",
             "personID": str(person_data["id"])
         }
@@ -97,20 +100,20 @@ def queryPerson(personSearch):
     returnJSON = {"people": people}
 
     # Write JSON data to file
-    with open("searchresultPerson.txt", "w") as f:
-        json.dump(returnJSON, f, indent=4)
+    # with open("searchresultPerson.txt", "w") as f:
+    #     json.dump(returnJSON, f, indent=4)
         
     return returnJSON
 
 # TESTING
-person_search_query = "Keanu Reeves"
-person_search_results = queryPerson(person_search_query)
-print(json.dumps(person_search_results, indent=4))
+# person_search_query = "Keanu Reeves"
+# person_search_results = queryPerson(person_search_query)
+# print(json.dumps(person_search_results, indent=4))
 
-with open("searchresultPerson.txt", "r") as file:
-    data = file.read()
+# with open("searchresultPerson.txt", "r") as file:
+#     data = file.read()
 
-print(data)
+# print(data)
 
 
 def getMovieInfo(movieID):
@@ -123,14 +126,25 @@ def getMovieInfo(movieID):
     #              "summary" : "", "language": "", "pathtoposter" : "", "movieID" : "",           
     # "cast" : [{"name" : "", "character" : "", "personID" : ""}],
     # "crew": [{"name": "", "role", "personID" : ""}] }
+
+    print("retrieving movie info for "+ movieID, file=sys.stderr)
+
     response_details = requests.get(f"https://api.themoviedb.org/3/movie/{movieID}", headers=headers)
     movie_details = response_details.json()
+
+    releaseDate =""
+    if movie_details.get("release_date"):
+        parts =  movie_details.get("release_date", "").split("-")
+        year = parts[0]
+        month = int(parts[1])
+        day = parts[2]
+        releaseDate = f"{MONTHS[month-1]}, {day}, {year}"
 
     details_info = {
         "name": movie_details.get("original_title", ""),
         "tagline": movie_details.get("tagline", ""),
         "runtime": movie_details.get("runtime", ""),
-        "releaseDate": movie_details.get("release_date", "").split("-")[0] if movie_details.get("release_date") else "",
+        "releaseDate": releaseDate,
         "summary": movie_details.get("overview", ""),
         "language": movie_details.get("original_language", ""),
         "pathtoposter": f"https://image.tmdb.org/t/p/w500{movie_details['poster_path']}" if movie_details.get('poster_path') else "",
@@ -145,7 +159,8 @@ def getMovieInfo(movieID):
         cast.append({
             "name": actor["name"],
             "character": actor["character"],
-            "personID": str(actor["id"])
+            "personID": str(actor["id"]),
+            "pathtopicture": f"https://image.tmdb.org/t/p/original/{actor['profile_path']}" if actor.get('profile_path') else ""
         })
 
     crew = []
@@ -153,7 +168,9 @@ def getMovieInfo(movieID):
         crew.append({
             "name": member["name"],
             "role": member["job"],
-            "personID": str(member["id"])
+            "personID": str(member["id"]),
+            "pathtopicture": f"https://image.tmdb.org/t/p/original/{member['profile_path']}" if member.get('profile_path') else ""
+
         })
 
     returnJSON = {
@@ -162,20 +179,20 @@ def getMovieInfo(movieID):
         "crew": crew
     }
 
-    with open("searchresultMovieID.txt", "w") as f:
-        json.dump(returnJSON, f, indent=4)
+    # with open("searchresultMovieID.txt", "w") as f:
+    #     json.dump(returnJSON, f, indent=4)
         
     return returnJSON
 
 # TESTING
-movie_search_query = 8913
-movie_search_results = getMovieInfo(movie_search_query)
-print(json.dumps(movie_search_results, indent=4))
+# movie_search_query = 8913
+# movie_search_results = getMovieInfo(movie_search_query)
+# print(json.dumps(movie_search_results, indent=4))
 
-with open("searchresultMovieID.txt", "r") as file:
-    data = file.read()
+# with open("searchresultMovieID.txt", "r") as file:
+#     data = file.read()
 
-print(data)
+# print(data)
 
 def getPersonInfo(personID):
     #takes an integer movieID and retrieves that movie's information from tmdb.com
@@ -183,30 +200,60 @@ def getPersonInfo(personID):
     #{"name" : "", "birthday" : "", "pathtopicture" : "", "personID" : "",
     # "roles" : [] }
 
+    print(f"getting id={personID} person info", file=sys.stderr)
     response_person = requests.get(f"https://api.themoviedb.org/3/person/{personID}", headers=headers)
     person_details = response_person.json()
 
+    birthday =""
+    if person_details.get("birthday"):
+        parts =  person_details.get("birthday", "").split("-")
+        year = parts[0]
+        month = int(parts[1])
+        day = parts[2]
+        birthday = f"{MONTHS[month-1]}, {day}, {year}"
+
+    deathday =""
+    if person_details.get("deathday"):
+        parts =  person_details.get("deathday", "").split("-")
+        year = parts[0]
+        month = int(parts[1])
+        day = parts[2]
+        deathday = f"{MONTHS[month-1]}, {day}, {year}"
+
+    print(f"retrieved information", file=sys.stderr)
     returnJSON = {
-        "name": person_details.get("name", ""),
-        "birthday": person_details.get("birthday", ""),
+        "name": person_details["name"],
+        "birthday": birthday,
+        "deathday": deathday,
         "pathtopicture": f"https://image.tmdb.org/t/p/w500{person_details['profile_path']}" if person_details.get('profile_path') else "",
         "personID": str(personID),
-        "roles": []
+        "cast": [],
+        "crew": []
     }
 
     response_credits = requests.get(f"https://api.themoviedb.org/3/person/{personID}/movie_credits", headers=headers)
     credits = response_credits.json()
 
-    for role in credits.get("cast", []):
-        returnJSON["roles"].append({
-            "movieID": str(role["id"]),
-            "character": role["character"],
-            "title": role["title"]
-        })
+    if "cast" in credits:
+        for role in credits["cast"]:
+            returnJSON["cast"].append({
+                "movieID": str(role["id"]),
+                "character": role["character"],
+                "title": role["title"],
+                "pathtoposter": f"https://image.tmdb.org/t/p/w500{role['poster_path']}" if role.get('poster_path') else ""
+            })
+    if "crew" in credits:
+        for role in credits["crew"]:
+            returnJSON["crew"].append({
+                "movieID": str(role["id"]),
+                "job" : role["job"],
+                "title": role["title"],
+                "pathtoposter": f"https://image.tmdb.org/t/p/w500{role['poster_path']}" if role.get('poster_path') else ""
+            })
 
     return returnJSON
 
 # TESTING
-person_search_query = 6384
-person_search_results = getPersonInfo(person_search_query)
-print(json.dumps(person_search_results, indent=4))
+# person_search_query = 6384
+# person_search_results = getPersonInfo(person_search_query)
+# print(json.dumps(person_search_results, indent=4))

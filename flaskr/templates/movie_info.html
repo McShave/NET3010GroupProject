@@ -2,24 +2,71 @@
 
 {% block title %}- Movie Info{% endblock %}
 
+{% set moviedetails = details["details"] %}
+{% set moviecast = details["cast"] %}
+{% set moviecrew = details["crew"] %}
 {% block content %}
+    <img src="{{moviedetails['pathtoposter']}}" style="width: 100%; max-width: 300px;">
+    <h1>{{ moviedetails["name"] }}</h1>
+    <h2>{{ moviedetails["tagline"] }}</h2>
+    <p>{{ moviedetails["summary"] }}</p>
+    <p>{{ moviedetails["runtime"] }} minutes. {{moviedetails["releaseDate"] }}</p>
+    <button onclick="hideCast()">Cast</button>
+    <div id="castContent" style="display: none">
+        {% for actor in moviecast %}
+            <p>
+                {% if 'https://' in actor['pathtopicture'] %}
+                    <img class="person__img" src="{{ actor['pathtopicture']}}" alt="{{actor['name']}} poster" style="width: 100%; max-width: 100px;">
+                {% endif %}
+                <a href="{{url_for('person_info', id=actor['personID']) }}">{{actor["name"]}} - {{actor["character"]}}</a>
+            </p>
+        {% endfor %}
+    </div>
+    <button onclick="hideCrew()">Crew</button>
+    <div id="crewContent" style="display: none">
+        {% for crew in moviecrew %}
+            <p>
+                {% if 'https://' in crew['pathtopicture'] %}
+                    <img class="person__img" src="{{ crew['pathtopicture']}}" alt="{{crew['name']}} poster" style="width: 100%; max-width: 100px;">
+                {% endif %}
+                <a href="{{url_for('person_info', id=crew['personID']) }}">{{crew["name"]}} - {{crew["role"]}}</a>
+            </p>
+        {% endfor %}
+    </div>
+
+    <script>
+        function hideCast() {
+            var x = document.getElementById("castContent");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function hideCrew() {
+            var x = document.getElementById("crewContent");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        } 
+    </script> 
+{% endblock %}
 
 
-
-{% if g.user %}
+<!-- {% if g.user %}
       <!-- <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a> -->
-<div>
-    <form>
-        <input name="review">
+<!-- <div> -->
+    <!-- <form> -->
+        <!-- <input name="review">
         <input name="score">
         <input type = "submit">
     </form>
 </div>
-{% else %}
+{% else %} -->
       <!-- <li><a href="{{ url_for('auth.register') }}">Register</a> -->
-    <p>If you want to leave a review, Please Log in to our website:</p><br>
+    <!-- <p>If you want to leave a review, Please Log in to our website:</p><br>
     <a class="cta" href="{{ url_for('auth.login') }}">Login</a>
-{% endif %}
-
-{% endblock %}
+{% endif %} --> -->

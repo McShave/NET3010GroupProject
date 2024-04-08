@@ -1,4 +1,5 @@
 import os
+import sys
 
 from flask import (Flask, render_template, request, redirect, url_for, session, flash)
 
@@ -48,25 +49,28 @@ def create_app(test_config=None):
     @app.route('/movie_list')
     def movie_list():
         
-        #query = search.queryMovie(session["search"])
-        query = {"movies" : ["happy", "sad"]}
+        query = search.queryMovie(session["search"])
+        #query = {"movies" : ["happy", "sad"]}
         return render_template('movie_list.html', query=query)
         # return render_template('movie_list.html', search=session["search"])
     
     @app.route('/person_list')
     def person_list():
-        #query = search.queryMovie(session["search"])
-        query = {"movies" : ["happy", "sad"]}
-        return render_template('movie_list.html', query=query)
+        query = search.queryPerson(session["search"])
+        return render_template('person_list.html', query=query)
         # return render_template('person_list.html', search=session["search"])
     
-    @app.route('/movie_info')
-    def movie_info():
-        return render_template('movie_info.html')
+    @app.route('/movie_info/<id>')
+    def movie_info(id):
+        # print("rendering movie detail", file=sys.stderr)
+        movieDetail = search.getMovieInfo(id)
+        return render_template('movie_info.html', details=movieDetail)
     
-    @app.route('/person_info')
-    def person_info():
-        return render_template('person_info.html')
+    @app.route('/person_info/<id>')
+    def person_info(id):
+        personDetail = search.getPersonInfo(id)
+        # personDetail = {}
+        return render_template('person_info.html', details=personDetail)
 
     @app.route('/user_admin')
     def user_admin():

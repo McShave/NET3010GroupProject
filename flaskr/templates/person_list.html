@@ -3,19 +3,13 @@
 {% block title %}- Person Search{% endblock %}
 
 {% block header %}
-<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a>
-<nav>
-    <ul class="nav_links">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
-    </ul>
-</nav>
-<!-- <p class="menu cta">Menu</p> -->
 {% endblock %}
 
 {% block content %}
-    {{ search }}
-    {% for item in query["movies"] %}
-        <p>{{ item }}</p>
+    {% for person in query['people'] %}
+        {% if 'https://' in person['pathtopicture'] %}
+            <img src="{{person['pathtopicture']}}" style="width: 100%; max-width: 100px;">
+        {% endif %}
+        <a href="{{url_for('person_info', id=person['personID'])}}">{{ person['name'] }}</a>
     {% endfor %}
 {% endblock %}

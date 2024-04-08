@@ -1,3 +1,54 @@
 {% extends 'base.html' %}
 
 {% block title %}- Person Info{% endblock %}
+
+{% block content %}
+    {% set casting = details['cast'] %}
+    {% set crewing = details['crew'] %}
+    <img src="{{details['pathtopicture']}}" style="width: 100%; max-width: 300px;">
+    <h1>{{ details["name"] }}</h1>
+    <p>{{ details["birthday"] }}</p>
+    <button onclick="hideCast()">Cast</button>
+    <div id="castContent" style="display: none">
+        {% for role in casting %}
+            <p>
+                {% if 'https://' in role['pathtoposter'] %}
+                    <img src="{{role['pathtoposter']}}" style="width: 100%; max-width: 100px;">
+                {% endif %}
+                <a href="{{url_for('movie_info', id=role['movieID'])}}">{{ role['title'] }}</a>
+                <text>- Character: {{role["character"]}}</text>
+            </p>
+        {% endfor %}
+    </div>
+    <button onclick="hideCrew()">Crew</button>
+    <div id="crewContent" style="display: none">
+        {% for role in crewing %}
+            <p>
+                {% if 'https://' in role['pathtoposter'] %}
+                    <img src="{{role['pathtoposter']}}" style="width: 100%; max-width: 100px;">
+                {% endif %}
+                <a href="{{url_for('movie_info', id=role['movieID'])}}">{{ role['title'] }}</a>
+                <text>- Job: {{role["job"]}}</text>
+            </p>
+        {% endfor %}
+    </div>
+    
+    <script>
+        function hideCast() {
+            var x = document.getElementById("castContent");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function hideCrew() {
+            var x = document.getElementById("crewContent");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        } 
+    </script>
+{% endblock %}
