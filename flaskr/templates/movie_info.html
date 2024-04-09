@@ -11,6 +11,48 @@
     <h2>{{ moviedetails["tagline"] }}</h2>
     <p>{{ moviedetails["summary"] }}</p>
     <p>{{ moviedetails["runtime"] }} minutes. {{moviedetails["releaseDate"] }}</p>
+    {% if g.user %}
+        <form id="moviereview" type="review" name="movieReview" onsubmit="return validateReviewForm()" method="post">
+            <label>Leave a Review</label>
+            <input class="button" type="submit" value="Enter"></input>
+            <textarea id="review-box" name="review-box" placeholder="Leave a Review"></textarea>
+            <select id="review-score" name="review-score">
+                <option value="zero">0</option>
+                <option value="one">1</option>
+                <option value="two">2</option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+                <option value="five">5</option>
+                <option value="six">6</option>
+                <option value="seven">7</option>
+                <option value="eight">8</option>
+                <option value="nine">9</option>
+                <option value="ten">10</option>
+            </select>
+        </form>
+        <script>
+        function validateReviewForm() {
+            let reviewText = document.forms["movieReview"]["review-box"].value;
+            let reviewScore = document.forms["movieReview"]["review-score"].value;
+            if (x == "" && reviewScore == "zero") {
+              alert("Leave a review or score.");
+              return false;
+            }
+          } 
+        </script>
+    {% else %}
+        <form type="userInfo" method="post">
+            <div>
+            <label for="username">Username: </label>
+            <input class="login" name="username" id="username" required>
+            </div>
+            <div>
+            <label for="password">Password: </label>
+            <input class="login" type="password" name="password" id="password" required>
+            </div>
+            <input class="userButton" type="submit" value="Log In">
+        </form>
+    {% endif %}
     <button onclick="hideCast()">Cast</button>
     <div id="castContent" style="display: none">
         {% for actor in moviecast %}

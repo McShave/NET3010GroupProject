@@ -26,6 +26,7 @@ def create_app(test_config=None):
         pass
 
     from . import search
+    from . import review
 
     # a simple page that says hello
     @app.route('/hello')
@@ -60,9 +61,15 @@ def create_app(test_config=None):
         return render_template('person_list.html', query=query)
         # return render_template('person_list.html', search=session["search"])
     
-    @app.route('/movie_info/<id>')
+    @app.route('/movie_info/<id>', methods=('GET','POST'))
     def movie_info(id):
-        # print("rendering movie detail", file=sys.stderr)
+        if request.method == 'POST':
+            reviewText = request.form["review-box"]
+            reviewScore = request.form["review-score"]
+            if reviewText == "" and reviewScore == "zero":
+                return ('', 204)
+            review.addMovieReview(reviewText, reviewScore, int(id), session.get('user_id'))
+            return redirect(url_for('movie_info', id=id))
         movieDetail = search.getMovieInfo(id)
         return render_template('movie_info.html', details=movieDetail)
     

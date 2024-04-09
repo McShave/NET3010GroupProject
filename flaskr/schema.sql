@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS user (
 CREATE TABLE IF NOT EXISTS user_movie_review (
     reviewID INTEGER PRIMARY KEY AUTOINCREMENT,
     movieID INTEGER, 
-    UserID INTEGER, 
+    userID INTEGER, 
     score INTEGER, 
     review TEXT, 
     FOREIGN KEY(userID) REFERENCES user(userID)
