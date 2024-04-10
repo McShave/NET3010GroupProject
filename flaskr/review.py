@@ -85,9 +85,11 @@ def getMovieReviews(movieID):
     data = db.execute(f"SELECT userID, review, score FROM user_movie_review where movieID={movieID}").fetchall()
 
     if data:
-        reviews = {"reviews": [], "score": calculateScore(movieID, db)}
+        
+        reviews = {"reviews": [], "score": None}
         for review in data:
             reviews["reviews"].append([getUsername(review[0], db), review[1], review[2]])
+        reviews["score"] = calculateScore(movieID, db)
     else:
         reviews = {}
 
@@ -103,15 +105,13 @@ def getUsername(userID, db):
 
 def calculateScore(movieID, db):
     data = db.execute(f"SELECT score from user_movie_review where movieID={movieID}").fetchall()
-    if not data:
-        return "No review sores"
-    else:
-        tally = 0
-        numRows = 0
-        for score in data:
+    
+    tally = 0
+    numRows = 0
+    for score in data:
+        if score[0]:
             tally += score[0]
             numRows += 1
-
     return tally / numRows
 
 def addToWatchlist(movieID):
