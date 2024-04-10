@@ -200,7 +200,8 @@ def getPersonInfo(personID):
     #{"name" : "", "birthday" : "", "pathtopicture" : "", "personID" : "",
     # "roles" : [] }
 
-    print(f"getting id={personID} person info", file=sys.stderr)
+    # print(f"getting id={personID} person info", file=sys.stderr)
+
     response_person = requests.get(f"https://api.themoviedb.org/3/person/{personID}", headers=headers)
     person_details = response_person.json()
 

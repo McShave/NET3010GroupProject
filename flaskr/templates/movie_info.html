@@ -41,17 +41,7 @@
           } 
         </script>
     {% else %}
-        <form type="userInfo" method="post">
-            <div>
-            <label for="username">Username: </label>
-            <input class="login" name="username" id="username" required>
-            </div>
-            <div>
-            <label for="password">Password: </label>
-            <input class="login" type="password" name="password" id="password" required>
-            </div>
-            <input class="userButton" type="submit" value="Log In">
-        </form>
+        <p><a href="{{url_for('auth.login')}}">Login Here</a></p>
     {% endif %}
     <button onclick="hideCast()">Cast</button>
     <div id="castContent" style="display: none">
@@ -80,11 +70,12 @@
     {% if not reviews %}
     <p>There are no reviews</p>
     {% else %}
+    <p>Movie Score: {{reviews["score"]}}</p>
     <button onclick="hideReviews()">Reviews</button>
     <div id="reviewContent" style="display: none">
         <p>Reviews:</p>
         {% for review in reviews["reviews"] %}
-            <p>{{ review[0] }}: {{ review[1] }}</p>
+            <p>{{ review[0] }}: ({{review[2]}}) {{ review[1] }}</p>
         {% endfor %}
     </div>
     {% endif %}

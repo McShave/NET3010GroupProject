@@ -82,25 +82,37 @@ def returnScoreInt(movieScore):
 def getMovieReviews(movieID):
     db = get_db()
 
-    data = db.execute(f"SELECT userID, review FROM user_movie_review where movieID={movieID}").fetchall()
+    data = db.execute(f"SELECT userID, review, score FROM user_movie_review where movieID={movieID}").fetchall()
 
     if data:
-        reviews = {"reviews": []}
+        reviews = {"reviews": [], "score": calculateScore(movieID, db)}
         for review in data:
-            reviews["reviews"].append([getUsername(review[0]), review[1]])
+            reviews["reviews"].append([getUsername(review[0], db), review[1], review[2]])
     else:
         reviews = {}
 
-    f = open("getMovieReviewTest.txt", "w")
-    f.write(json.dumps(reviews, indent=4))
-    f.close()
+    # f = open("getMovieReviewTest.txt", "w")
+    # f.write(json.dumps(reviews, indent=4))
+    # f.close()
 
     return reviews
 
-def getUsername(userID):
-    db = get_db()
+def getUsername(userID, db):
 
     return db.execute(f"SELECT username FROM user WHERE userID={userID}").fetchone()[0]
+
+def calculateScore(movieID, db):
+    data = db.execute(f"SELECT score from user_movie_review where movieID={movieID}").fetchall()
+    if not data:
+        return "No review sores"
+    else:
+        tally = 0
+        numRows = 0
+        for score in data:
+            tally += score[0]
+            numRows += 1
+
+    return tally / numRows
 
 def addToWatchlist(movieID):
     # add an data row to user_watch_next table in database
