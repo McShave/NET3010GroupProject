@@ -112,7 +112,10 @@ def calculateScore(movieID, db):
         if score[0]:
             tally += score[0]
             numRows += 1
-    return tally / numRows
+    if numRows:
+        return tally / numRows
+    else:
+        return "No review scores"
 
 def addToWatchlist(movieID):
     # add an data row to user_watch_next table in database
