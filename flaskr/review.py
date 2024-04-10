@@ -79,6 +79,29 @@ def returnScoreInt(movieScore):
     else:
         return None
 
+def getMovieReviews(movieID):
+    db = get_db()
+
+    data = db.execute(f"SELECT userID, review FROM user_movie_review where movieID={movieID}").fetchall()
+
+    if data:
+        reviews = {"reviews": []}
+        for review in data:
+            reviews["reviews"].append([getUsername(review[0]), review[1]])
+    else:
+        reviews = {}
+
+    f = open("getMovieReviewTest.txt", "w")
+    f.write(json.dumps(reviews, indent=4))
+    f.close()
+
+    return reviews
+
+def getUsername(userID):
+    db = get_db()
+
+    return db.execute(f"SELECT username FROM user WHERE userID={userID}").fetchone()[0]
+
 def addToWatchlist(movieID):
     # add an data row to user_watch_next table in database
     # use g.user to find username, then query user table to retrieve userID

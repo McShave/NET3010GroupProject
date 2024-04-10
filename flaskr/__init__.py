@@ -71,7 +71,8 @@ def create_app(test_config=None):
             review.addMovieReview(reviewText, reviewScore, int(id), session.get('user_id'))
             return redirect(url_for('movie_info', id=id))
         movieDetail = search.getMovieInfo(id)
-        return render_template('movie_info.html', details=movieDetail)
+        movieReviews = review.getMovieReviews(id)
+        return render_template('movie_info.html', details=movieDetail, reviews=movieReviews)
     
     @app.route('/person_info/<id>')
     def person_info(id):
