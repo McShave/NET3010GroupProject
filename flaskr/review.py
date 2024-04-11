@@ -117,9 +117,29 @@ def calculateScore(movieID, db):
     else:
         return "No review scores"
 
-def addToWatchlist(movieID):
-    # add an data row to user_watch_next table in database
-    # use g.user to find username, then query user table to retrieve userID
-    # user movieID as movieID entry
+def addToWatchList(userID, movieID):
+    #enter a new row in user_watch_next containing userID and movieID
 
-    return
+    db = get_db()
+
+    db.execute() #enter insert statement here
+
+    db.commit()
+
+    return 
+
+def getUserWatchlist(userID):
+    # query user_watch_next for user's watch next entries
+    # add movieIDs to watchNext
+
+    db = get_db()
+
+    data = db.execute() #enter select statement here (retrieve movieIDs)
+    watchNext = []
+
+    if data:
+        for element in data:
+            if element[0]:
+                watchNext.append(element[0])
+
+    return watchNext
