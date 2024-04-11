@@ -22,8 +22,8 @@
         </ul>
     </nav>
     {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+      <span><b>{{ g.user['username'] }}</b></span>
+      <a class="cta" href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
       <a class="cta" href="{{ url_for('auth.login') }}">Login/Registration</a>
     {% endif %}
@@ -36,8 +36,10 @@
   {% block content %}{% endblock %}
 
   <!-- Footer -->
-  <footer>
-    <p>Contact: email.com</p>
+  <footer class="footer-content">
+    <p>© 2024 FLASHBACK</p>
+    <p>Contact: <a href="mailto:shin0091@algonquinlive.com?subject=Contact">[School Email]</a>.</p>
+    <p>Or contact: minhwanshin@cmail.carleton.ca</p>
   </footer>
 
 </section>
