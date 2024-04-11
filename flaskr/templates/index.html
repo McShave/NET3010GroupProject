@@ -3,12 +3,13 @@
 {% block title %}- Movie Ratings{% endblock %}
 
 {% block header %}
+<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_1.png') }}" alt="Flashback Logo" height="80"></a> 
 {% endblock %}
 
 
 {% block content %}
 <h1 class="neon">FLASHBACK</h1>
-<form class="search-box" type="search" method="POST">    
+<form class="search-box" type="search" method="POST" autocomplete="off">    
         <!-- Movie search box (input field, search button, etc.) -->
         <input  class="search" type="search" name="moviesearch" id="moviesearch" placeholder="Search for movies...">
         <input class="button" type="submit" value="Search">

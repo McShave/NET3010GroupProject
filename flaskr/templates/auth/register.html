@@ -3,20 +3,12 @@
 {% block title %}- Registration Page{% endblock %}
 
 {% block header %}
-<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a>
-<nav>
-    <ul class="nav_links">
-    <!-- <img src="logo_2.JPG" alt="Flashback Logo" height="100"> -->
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('person_search') }}">Person Search</a></li>
-        <!-- <li><button><a href="registration.html">Login</a></button></li> Simple user login button -->
-    </ul>
-</nav>
+<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a> 
 {% endblock %}
 
 {% block content %}
 <h1 class = "neon">Sign up for FLASHBACK</h1>
-  <form type="userInfo" method="post">
+  <form type="userInfo" method="post" autocomplete="off">
     <label for="username">Username: </label>
     <input class="login" name="username" id="username" required>
     <label for="password">Password: </label>

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block title %}- Movie Info{% endblock %}
+{% block header %}
+<a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a> 
+{% endblock %}
 
 {% set moviedetails = details["details"] %}
 {% set moviecast = details["cast"] %}
@@ -12,7 +15,7 @@
     <p>{{ moviedetails["summary"] }}</p>
     <p>{{ moviedetails["runtime"] }} minutes. {{moviedetails["releaseDate"] }}</p>
     {% if g.user %}
-        <form id="moviereview" type="review" name="movieReview" onsubmit="return validateReviewForm()" method="post">
+        <form id="moviereview" type="review" name="movieReview" onsubmit="return validateReviewForm()" method="post"  autocomplete="off">
             <label>Leave a Review</label>
             <input class="button" type="submit" value="Enter"></input>
             <textarea id="review-box" name="review-box" placeholder="Leave a Review"></textarea>
