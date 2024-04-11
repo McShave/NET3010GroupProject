@@ -77,26 +77,6 @@ button a
     background-color: rgba(0, 136, 169, 0.8);
 }
 
-/* nav {
-    display: flex;
-    justify-content: center;
-    background-color: #8b8b8b;
-    padding: 10px;
-} */
-
-/* nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
-} */
-
-/* li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    padding: 50px 0;
-} */
 
 
 h1 {
@@ -193,18 +173,20 @@ button {
 }
 
 /* Footer styles */
-footer {
+footer{
     text-align: center;
     margin-top: 250px;
 }
 
-.footer-content {
+.footer-content,
+.footer-content a {
     padding: 10px;
     background-color: #24252a;
     color: #707070;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     line-height: 2;
+    text-decoration: none;
 }
 
 
@@ -264,16 +246,6 @@ footer {
     text-decoration: none;
   }
   
-  .movie__genres {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 5px 0px;
-  }
-  
-  .movie__genres li,
   .movie__date {
     margin-right: 10px;
     font-size: 14px;

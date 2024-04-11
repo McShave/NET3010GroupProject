@@ -8,16 +8,34 @@
 {% set moviedetails = details["details"] %}
 {% set moviecast = details["cast"] %}
 {% set moviecrew = details["crew"] %}
+
+
 {% block content %}
-    <img src="{{moviedetails['pathtoposter']}}" style="width: 100%; max-width: 300px;">
-    <h1>{{ moviedetails["name"] }}</h1>
-    <h2>{{ moviedetails["tagline"] }}</h2>
-    <p>{{ moviedetails["summary"] }}</p>
-    <p>{{ moviedetails["runtime"] }} minutes. {{moviedetails["releaseDate"] }}</p>
-    {% if g.user %}
-        <form id="moviereview" type="review" name="movieReview" onsubmit="return validateReviewForm()" method="post"  autocomplete="off">
-            <label>Leave a Review</label>
-            <input class="button" type="submit" value="Enter"></input>
+<!-- <div id="detail" style="background-image: url(&quot;https://yts.mx/assets/images/movies/The_Shawshank_Redemption_1994/background.jpg&quot;);"> -->
+<div id="detail">
+    <div id="container">
+        <h2 id="title">{{ moviedetails["name"] }}</h2> 
+        <div id="description">
+            <img src="{{moviedetails['pathtoposter']}}" id="des_img">
+            <div id="mini1">
+                <span>Release</span>    
+                <!-- &nbsp;  -->
+                <h4>{{moviedetails["releaseDate"] }}</h4><br>
+                <span>Tagline</span> 
+                <h4><span> {{ moviedetails["tagline"] }}</h4><br>
+
+                <!-- <span>Rating</span> 
+                <h4>9.3 ⭐</h4> <br> -->
+
+                <span>Summary</span> 
+                    <h4><p id="detail_des">
+                        {{ moviedetails["summary"] }}</p></h4><br>
+
+                <span>Review and Ratings</span> <br>
+            <div>
+            {% if g.user %}
+            <form id="moviereview" type="review" name="movieReview" onsubmit="return validateReviewForm()" method="post"  autocomplete="off">
+            <label>Leave a Review and your Score</label>
             <textarea id="review-box" name="review-box" placeholder="Leave a Review"></textarea>
             <select id="review-score" name="review-score">
                 <option value="zero">0</option>
@@ -32,20 +50,36 @@
                 <option value="nine">9</option>
                 <option value="ten">10</option>
             </select>
-        </form>
-        <script>
-        function validateReviewForm() {
+            <input class="button" type="submit" value="Enter"></input>
+            </form>
+            
+            <script>
+            function validateReviewForm() {
             let reviewText = document.forms["movieReview"]["review-box"].value;
             let reviewScore = document.forms["movieReview"]["review-score"].value;
             if (x == "" && reviewScore == "zero") {
               alert("Leave a review or score.");
               return false;
             }
-          } 
-        </script>
+            } 
+            </script>
+
     {% else %}
-        <p><a href="{{url_for('auth.login')}}">Login Here</a></p>
+        <p><a href="{{url_for('auth.login')}}">Login Here to Leave a review</a></p>
     {% endif %}
+    {% if not reviews %}
+        <p>There are no reviews</p>
+    {% else %}
+        <p>Movie Score: {{reviews["score"]}}</p>
+        <button onclick="hideReviews()">Reviews</button>
+        <div id="reviewContent" style="display: none">
+        <p>Reviews:</p>
+        {% for review in reviews["reviews"] %}
+            <p>{{ review[0] }}: ({{review[2]}}) {{ review[1] }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}<br>
+
     <button onclick="hideCast()">Cast</button>
     <div id="castContent" style="display: none">
         <p>Cast</p>
@@ -70,18 +104,22 @@
             </p>
         {% endfor %}
     </div>
-    {% if not reviews %}
-    <p>There are no reviews</p>
-    {% else %}
-    <p>Movie Score: {{reviews["score"]}}</p>
-    <button onclick="hideReviews()">Reviews</button>
-    <div id="reviewContent" style="display: none">
-        <p>Reviews:</p>
-        {% for review in reviews["reviews"] %}
-            <p>{{ review[0] }}: ({{review[2]}}) {{ review[1] }}</p>
-        {% endfor %}
+            </div>
+    
+            </div>
+        </div>
     </div>
-    {% endif %}
+</div>
+
+
+    <!-- <img src="{{moviedetails['pathtoposter']}}" style="width: 100%; max-width: 300px;">
+    <h1>{{ moviedetails["name"] }}</h1>
+    <h2>{{ moviedetails["tagline"] }}</h2>
+    <p>{{ moviedetails["summary"] }}</p>
+    <p>{{ moviedetails["runtime"] }} minutes. {{moviedetails["releaseDate"] }}</p> -->
+
+
+    
     <script>
         function hideCast() {
             var x = document.getElementById("castContent");
