@@ -7,7 +7,7 @@ import os
 import sys
 
 
-MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November" "December"]
+MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 # f = open("searchresults.txt", "x")
 # f.write(json.dumps(respjson, indent=4))
