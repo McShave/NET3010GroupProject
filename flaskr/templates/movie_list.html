@@ -14,7 +14,7 @@
 
         <div class="body">
           <div class="movie">
-              <img class="movie__img" src="{{ item['pathtoposter']}}" alt="{{title}} poster" style="width: 100%; max-width: 100px;">
+              <img class="movie__img" src="{{ item['pathtoposter']}}" alt="{{title}} poster">
               <div>
                 <h2 class="movie__title">
                   <a href="{{ url_for('movie_info', id=item['movieID']) }}">{{item['title']}}</a>

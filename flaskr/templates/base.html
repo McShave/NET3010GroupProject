@@ -8,7 +8,7 @@
     <meta name="date" content="2024-04-03">
     <title>Flashback {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='info_style.css') }}">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         </ul>
     </nav>
     {% if g.user %}
-      <span><b>{{ g.user['username'] }}</b></span>
+      <span><b><a href="{{ url_for('user_admin') }}">{{ g.user['username'] }}</a></b></span>
       <a class="cta" href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
       <a class="cta" href="{{ url_for('auth.login') }}">Login/Registration</a>
@@ -35,6 +35,7 @@
     {% endfor %}
     
   {% block content %}{% endblock %}
+</section>
 
   <!-- Footer -->
   <footer class="footer-content">
@@ -42,8 +43,6 @@
     <p>Contact: <a href="mailto:shin0091@algonquinlive.com?subject=Contact">[Algonquin Email]</a></p>
     <p>Or contact: <a href="mailto:minhwanshin@cmail.carleton.ca?subject=Contact">[Carleton Email]</a></p>
   </footer>
-
-</section>
 
 </body>
 </html>

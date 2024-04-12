@@ -1,5 +1,24 @@
 <!-- User Profile -->
+{% extends 'base.html' %}
+{% block title %}- User Profile{% endblock %}
 
 {% block header %}
 <a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a> 
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>
+        This is FLASHBACK User Profile Page.
+    </h1>
+    <div class="text">
+    {% if g.user %}
+      <h2><span>Welcome <b>{{ g.user['username'] }}!</b></span></h2><br>
+      <a class="cta" href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <a class="cta" href="{{ url_for('auth.login') }}">Login/Registration</a>
+    {% endif %}
+    </div>
+
 {% endblock %}

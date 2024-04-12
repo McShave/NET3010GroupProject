@@ -1,0 +1,86 @@
+/* For Information Pages */
+/* Student Name: Minhwan Shin */
+
+#detail {
+    padding: 20px 100px;
+    box-sizing: border-box;
+    color: black;
+  }
+
+#container{
+    background-color: rgba(211, 211, 211, 0.833);
+    padding: 13px;
+    border-radius: 5px;
+}
+
+#title{
+    width: 100%;
+    padding-left: 10px;
+    font-size: 32px;
+}
+
+#description{
+  display: inline-flex;
+  /* display: flex; */
+  justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 10px;
+    background-color: white;
+}
+
+#des_img{
+    /* display: inline; */
+    height: 400px;
+    max-width: 100%;
+    width: auto\9;
+    margin-left: 45px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#mini1{
+    display: inline-block;
+    /* display: inline; */
+    margin-right: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+#mini1>span{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.637);
+}
+
+#mini1>h4{
+    display: inline;
+}
+
+
+#detail_des{
+    margin-bottom: 5px;
+    margin-top: -5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    /* -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical; */
+}
+
+/* 
+#summary{
+  width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+} */
+
+
+
+
+

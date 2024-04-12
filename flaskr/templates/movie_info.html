@@ -16,16 +16,12 @@
     <div id="container">
         <h2 id="title">{{ moviedetails["name"] }}</h2> 
         <div id="description">
-            <img src="{{moviedetails['pathtoposter']}}" id="des_img">
+            <img src="{{moviedetails['pathtoposter']}}"id="des_img">
             <div id="mini1">
-                <span>Release</span>    
-                <!-- &nbsp;  -->
+                <span>Release</span><br>    
                 <h4>{{moviedetails["releaseDate"] }}</h4><br>
-                <span>Tagline</span> 
+                <span>Tagline</span><br>
                 <h4><span> {{ moviedetails["tagline"] }}</h4><br>
-
-                <!-- <span>Rating</span> 
-                <h4>9.3 ⭐</h4> <br> -->
 
                 <span>Summary</span> 
                     <h4><p id="detail_des">
@@ -50,7 +46,7 @@
                 <option value="nine">9</option>
                 <option value="ten">10</option>
             </select>
-            <input class="button" type="submit" value="Enter"></input>
+            <input class="userButton" type="submit" value="Enter"></input>
             </form>
             
             <script>
@@ -65,22 +61,23 @@
             </script>
 
     {% else %}
-        <p><a href="{{url_for('auth.login')}}">Login Here to Leave a review</a></p>
+        <p><a class="userButton" href="{{url_for('auth.login')}}">Login to leave a review</a></p><br>
+        
     {% endif %}
     {% if not reviews %}
         <p>There are no reviews</p>
     {% else %}
-        <p>Movie Score: {{reviews["score"]}}</p>
-        <button onclick="hideReviews()">Reviews</button>
+        <p>⭐ Movie Score: {{reviews["score"]}}</p>
+        <button class="userButton" onclick="hideReviews()">Reviews</button><br>
         <div id="reviewContent" style="display: none">
         <p>Reviews:</p>
         {% for review in reviews["reviews"] %}
             <p>{{ review[0] }}: ({{review[2]}}) {{ review[1] }}</p>
         {% endfor %}
-    </div>
+        </div>
     {% endif %}<br>
 
-    <button onclick="hideCast()">Cast</button>
+    <button class="userButton" onclick="hideCast()">Cast</button>
     <div id="castContent" style="display: none">
         <p>Cast</p>
         {% for actor in moviecast %}
@@ -92,7 +89,7 @@
             </p>
         {% endfor %}
     </div>
-    <button onclick="hideCrew()">Crew</button>
+    <button class="userButton" onclick="hideCrew()" >Crew</button>
     <div id="crewContent" style="display: none">
         <p>Crew:</p>
         {% for crew in moviecrew %}
@@ -148,19 +145,3 @@
     </script> 
 {% endblock %}
 
-
-<!-- {% if g.user %}
-      <!-- <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a> -->
-<!-- <div> -->
-    <!-- <form> -->
-        <!-- <input name="review">
-        <input name="score">
-        <input type = "submit">
-    </form>
-</div>
-{% else %} -->
-      <!-- <li><a href="{{ url_for('auth.register') }}">Register</a> -->
-    <!-- <p>If you want to leave a review, Please Log in to our website:</p><br>
-    <a class="cta" href="{{ url_for('auth.login') }}">Login</a>
-{% endif %} --> -->
