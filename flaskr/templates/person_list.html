@@ -8,9 +8,17 @@
 
 {% block content %}
     {% for person in query['people'] %}
-        {% if 'https://' in person['pathtopicture'] %}
-            <img src="{{person['pathtopicture']}}" style="width: 100%; max-width: 100px;">
-        {% endif %}
-        <a href="{{url_for('person_info', id=person['personID'])}}">{{ person['name'] }}</a>
+        <div class="body">
+            <div class="movie">
+                {% if 'https://' in person['pathtopicture'] %}
+                    <img class="movie__img" src="{{person['pathtopicture']}}"  alt="{{person}} poster">
+                {% endif %}
+                <div>
+                  <h2 class="movie__title">
+                    <a href="{{url_for('person_info', id=person['personID'])}}">{{ person['name'] }}</a>
+                  </h2>
+                </div>
+              </div>
+        </div>
     {% endfor %}
 {% endblock %}

@@ -28,7 +28,21 @@
     {% else %}
       <a class="cta" href="{{ url_for('auth.login') }}">Login/Registration</a>
     {% endif %}
+    <p class="menu cta">Menu</p>
   </header>
+  <div id="mobile__menu" class="overlay">
+    <a class="close">&times;</a>
+    <div class="overlay__content">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('person_search') }}">Person Search</a>
+        {% if g.user %}
+      <span><b><a href="{{ url_for('user_admin') }}">{{ g.user['username'] }}</a></b></span>
+      <a class="cta" href="{{ url_for('auth.logout') }}">Log Out</a>
+      {% else %}
+      <a class="cta" href="{{ url_for('auth.login') }}">Login/Registration</a>
+      {% endif %}
+    </div>
+    </div>
 
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
@@ -43,6 +57,22 @@
     <p>Contact: <a href="mailto:shin0091@algonquinlive.com?subject=Contact">[Algonquin Email]</a></p>
     <p>Or contact: <a href="mailto:minhwanshin@cmail.carleton.ca?subject=Contact">[Carleton Email]</a></p>
   </footer>
+
+  <script>
+    const doc = document;
+    const menuOpen = doc.querySelector(".menu");
+    const menuClose = doc.querySelector(".close");
+    const overlay = doc.querySelector(".overlay");
+
+  menuOpen.addEventListener("click", () => {
+    overlay.classList.add("overlay--active");
+  });
+
+  menuClose.addEventListener("click", () => {
+    overlay.classList.remove("overlay--active");
+  });
+
+  </script>
 
 </body>
 </html>

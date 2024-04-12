@@ -16,8 +16,8 @@
     <div id="container">
         <h2 id="title">{{ moviedetails["name"] }}</h2> 
         <div id="description">
-            <img src="{{moviedetails['pathtoposter']}}"id="des_img">
-            <div id="mini1">
+            <img src="{{moviedetails['pathtoposter']}}" id="des_img">
+            <div id="mini">
                 <span>Release</span><br>    
                 <h4>{{moviedetails["releaseDate"] }}</h4><br>
                 <span>Tagline</span><br>
@@ -31,7 +31,7 @@
             <div>
             {% if g.user %}
             <form id="moviereview" type="review" name="movieReview" onsubmit="return validateReviewForm()" method="post"  autocomplete="off">
-            <label>Leave a Review and your Score</label>
+            <label><b>Leave a Review and your Score</b></label>
             <textarea id="review-box" name="review-box" placeholder="Leave a Review"></textarea>
             <select id="review-score" name="review-score">
                 <option value="zero">0</option>
@@ -78,26 +78,26 @@
     {% endif %}<br>
 
     <button class="userButton" onclick="hideCast()">Cast</button>
-    <div id="castContent" style="display: none">
-        <p>Cast</p>
+    <div id="castContent" style="display: none"><br>
         {% for actor in moviecast %}
             <p>
                 {% if 'https://' in actor['pathtopicture'] %}
-                    <img class="person__img" src="{{ actor['pathtopicture']}}" alt="{{actor['name']}} poster" style="width: 100%; max-width: 100px;">
+                    <img class="person__img" src="{{ actor['pathtopicture']}}" alt="{{actor['name']}} poster" style="width: 100%; max-width: 100px">
+                    {% else %} <span>  (No Image)  </span>
                 {% endif %}
-                <a href="{{url_for('person_info', id=actor['personID']) }}">{{actor["name"]}} - {{actor["character"]}}</a>
+                <b><a href="{{url_for('person_info', id=actor['personID']) }}">{{actor["name"]}} - {{actor["character"]}}</a></b>
             </p>
         {% endfor %}
     </div>
     <button class="userButton" onclick="hideCrew()" >Crew</button>
-    <div id="crewContent" style="display: none">
-        <p>Crew:</p>
+    <div id="crewContent" style="display: none"><br>
         {% for crew in moviecrew %}
             <p>
                 {% if 'https://' in crew['pathtopicture'] %}
                     <img class="person__img" src="{{ crew['pathtopicture']}}" alt="{{crew['name']}} poster" style="width: 100%; max-width: 100px;">
+                    {% else %} <span>  (No Image)  </span>
                 {% endif %}
-                <a href="{{url_for('person_info', id=crew['personID']) }}">{{crew["name"]}} - {{crew["role"]}}</a>
+                <b><a href="{{url_for('person_info', id=crew['personID']) }}">{{crew["name"]}} - {{crew["role"]}}</a></b>
             </p>
         {% endfor %}
     </div>
@@ -107,15 +107,6 @@
         </div>
     </div>
 </div>
-
-
-    <!-- <img src="{{moviedetails['pathtoposter']}}" style="width: 100%; max-width: 300px;">
-    <h1>{{ moviedetails["name"] }}</h1>
-    <h2>{{ moviedetails["tagline"] }}</h2>
-    <p>{{ moviedetails["summary"] }}</p>
-    <p>{{ moviedetails["runtime"] }} minutes. {{moviedetails["releaseDate"] }}</p> -->
-
-
     
     <script>
         function hideCast() {

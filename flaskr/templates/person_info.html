@@ -5,37 +5,50 @@
 <a class="logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo_2.png') }}" alt="Flashback Logo" height="80"></a> 
 {% endblock %}
 
+{% set casting = details['cast'] %}
+{% set crewing = details['crew'] %}
+
 {% block content %}
-    {% set casting = details['cast'] %}
-    {% set crewing = details['crew'] %}
-    <img src="{{details['pathtopicture']}}" style="width: 100%; max-width: 300px;">
-    <h1>{{ details["name"] }}</h1>
-    <p>{{ details["birthday"] }}</p>
-    <button onclick="hideCast()">Cast</button>
-    <div id="castContent" style="display: none">
+    <div id="detail">
+    <div id="container">
+        <h2 id="title">{{ details["name"] }}</h1>
+    <div id="description">
+    <img src="{{details['pathtopicture']}}" id="des_img">
+    <div id="mini">
+        <span>Date of Birth: </span><h4>{{ details["birthday"] }}</h4><br>
+        <span>Credits: </span>
+    <button class="userButton" onclick="hideCast()">Cast</button>
+    <div id="castContent" style="display: none"><br>
         {% for role in casting %}
             <p>
                 {% if 'https://' in role['pathtoposter'] %}
                     <img src="{{role['pathtoposter']}}" style="width: 100%; max-width: 100px;">
+                    {% else %} <span>  (No Image)  </span>
                 {% endif %}
                 <a href="{{url_for('movie_info', id=role['movieID'])}}">{{ role['title'] }}</a>
-                <text>- Character: {{role["character"]}}</text>
+                <b><text>- Character: {{role["character"]}}</text></b>
             </p>
         {% endfor %}
     </div>
-    <button onclick="hideCrew()">Crew</button>
-    <div id="crewContent" style="display: none">
+    <button class="userButton" onclick="hideCrew()">Crew</button>
+    <div id="crewContent" style="display: none"><br>
         {% for role in crewing %}
             <p>
                 {% if 'https://' in role['pathtoposter'] %}
                     <img src="{{role['pathtoposter']}}" style="width: 100%; max-width: 100px;">
+                    {% else %} <span>  (No Image)  </span>
                 {% endif %}
                 <a href="{{url_for('movie_info', id=role['movieID'])}}">{{ role['title'] }}</a>
-                <text>- Job: {{role["job"]}}</text>
+                <b><text>- Job: {{role["job"]}}</text></b>
             </p>
         {% endfor %}
     </div>
-    
+    </div>
+</div>
+</div>
+</div>
+
+
     <script>
         function hideCast() {
             var x = document.getElementById("castContent");

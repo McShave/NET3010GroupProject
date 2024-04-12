@@ -30,7 +30,7 @@
 }
 
 #des_img{
-    /* display: inline; */
+    display: inline;
     height: 400px;
     max-width: 100%;
     width: auto\9;
@@ -39,7 +39,7 @@
     margin-top: 30px;
 }
 
-#mini1{
+#mini{
     display: inline-block;
     /* display: inline; */
     margin-right: 10px;
@@ -48,14 +48,14 @@
 }
 
 
-#mini1>span{
+#mini>span{
     margin-bottom: 10px;
     margin-top: 10px;
     display: inline-block;
     color: rgba(0, 0, 0, 0.637);
 }
 
-#mini1>h4{
+#mini>h4{
     display: inline;
 }
 
@@ -69,16 +69,6 @@
     /* -webkit-line-clamp: 10;
     -webkit-box-orient: vertical; */
 }
-
-/* 
-#summary{
-  width: 230px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-} */
 
 
 

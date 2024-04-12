@@ -19,7 +19,7 @@
                 <h2 class="movie__title">
                   <a href="{{ url_for('movie_info', id=item['movieID']) }}">{{item['title']}}</a>
                 </h2>
-                <h3 class="movie__date">{{ item['year'] }}</h3>
+                <h3 class="movie__date">Released in {{ item['year'] }}</h3>
               </div>
             </div>
       </div>
